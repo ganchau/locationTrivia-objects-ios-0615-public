@@ -28,7 +28,8 @@
 
 
 
-- (NSString *)shortenLocationNameWithLocation:(NSDictionary *)location ToCount:(NSInteger)count
+
+ - (NSString *)shortenLocationNameWithLocation:(NSDictionary *)location ToCount:(NSInteger)count
 {
     NSString *name = location[@"name"];
     if (count <0) {
@@ -47,8 +48,8 @@
 -(NSArray *)getLocationNamesWithLocations:(NSArray *)locations
 {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
-    for (NSDictionary *location in locations) {
-        NSString *name = location[@"name"];
+    for (FISLocation *location in locations) {
+        NSString *name = location.name;
         [resultArray addObject:name];
     }
 
@@ -67,10 +68,10 @@
     return NO;
 }
 
-- (NSDictionary *)searchForLocationName:(NSString *)name inLocations:(NSArray *)locations
+- (FISLocation *)searchForLocationName:(NSString *)name inLocations:(NSArray *)locations
 {
-    for (NSDictionary *location in locations) {
-        NSString *locationName = location[@"name"];
+    for (FISLocation *location in locations) {
+        NSString *locationName = location.name;
         if ([locationName isEqualToString:name]) {
             return location;
         }
