@@ -32,7 +32,7 @@
 - (NSString *)shortenedNameToLength:(NSInteger)count
 {
     NSString *name = self.name;
-    if (count < 0) {
+    if (count < 0 || name.length == count) {
         return name;
     }
     return [name substringToIndex:count];
